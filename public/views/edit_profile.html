@@ -1,0 +1,19 @@
+<h1>EDIT PROFILE</h1>
+
+<form class="well container">
+<label>Your Name</label><br />
+<input class="form-control" placeholder="Your Name..." ng-model="vm.user.name" />
+
+<label>Age</label><br />
+<input class="form-control" placeholder="Age..." ng-model="vm.user.age" />
+
+<label>Username</label><br />
+<input class="form-control" placeholder="Username..." ng-model="vm.user.username" />
+
+<label>Email</label><br />
+<input class="form-control" placeholder="Email..." ng-model="vm.user.email" />
+
+<div style="text-align: center;">
+<button ng-click="vm.editProfile()">Finish Edit</button>
+</div>
+</form>

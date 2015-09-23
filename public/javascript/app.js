@@ -13,7 +13,20 @@
 		}).state('LoginUser', {
 			url: '/Login',
 			templateUrl: 'views/login_user.html'
-		});
+		}).state('Profile', {
+			url: '/Profile',
+			templateUrl: 'views/profile.html',
+			controller: 'ProfileController',
+			controllerAs: 'vm'
+		}).state('EditProfile', {
+			url: '/EditProfile/:id',
+			templateUrl: 'views/edit_profile.html',
+			controller: 'ProfileController',
+			controllerAs: 'vm'
+		}).state('Messages', {
+			url: '/messages',
+			templateUrl: 'views/messaging.html'
+		})
 		$urlRouterProvider.otherwise('/');
 	}
 })();

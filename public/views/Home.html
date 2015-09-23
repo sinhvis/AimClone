@@ -1,3 +1,12 @@
 <div ng-controller="HomeController as vm">
-	<h1>{{vm.title}}</h1>
+	<!-- <h1>{{nav.title}}</h1> -->
+	<div ng-show="nav.status">
+		
+		<div ng-repeat="user in vm.users">
+			<h2>{{user.name}}</h2>
+			<h4>Age: {{user.age}}</h4>
+			<a ui-sref="Messaging">Message</a>
+		</div>
+	</div>
+</div>
 </div>

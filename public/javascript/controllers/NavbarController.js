@@ -7,6 +7,7 @@
 		var vm = this;
 		vm.user = {};
 		vm.status = $rootScope._user;
+		vm.title = "AIM Clone" ;
 
 		vm.register = function() {
 			UserFactory.register(vm.user).then(function() {

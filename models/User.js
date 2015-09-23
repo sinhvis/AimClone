@@ -3,10 +3,13 @@ var crypto = require('crypto');
 var jwt = require("jsonwebtoken")
 
 var UserSchema = new mongoose.Schema({
+	name: String,
+	age: Number,
 	username: {type: String, lowercase: true, unique: true},
 	email: {type: String, lowercase: true, unique: true},
 	passwordHash: String,
 	salt: String
+	// friends: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}] 
 	// comments: [{type: mongoose.Schema.Types.ObjectId, ref: "MovieComment"}]
 });
 

@@ -1,4 +1,12 @@
+<h1>Create New Profile</h1>
 <form class="well container" ng-submit="nav.register()">
+
+	<label>Name</label><br />
+	<input class="form-control" required placeholder="Name..." ng-model="nav.user.name" />
+
+	<label>Age</label><br />
+	<input class="form-control" required placeholder="Age..." ng-model="nav.user.age" />
+
 	<label>Username</label> <br/>
 	<input class="form-control" placeholder="Username..." ng-model="nav.user.username" required />
 	
@@ -12,6 +20,6 @@
 	<input type="password" class="form-control" placeholder="Confirm Password..." ng-model="nav.user.confirmPass" required />
 	
 	<div style="text-align: center;">
-		<button type="submit" class="btn btn-lg btn-success" ng-disabled="!nav.user.username  || !nav.user.email || !nav.user.password || !(nav.user.password === nav.user.confirmPass)">Submit</button>
+		<button type="submit" class="btn btn-lg btn-success" ng-disabled="!nav.user.name || !nav.user.age || !nav.user.username  || !nav.user.email || !nav.user.password || !(nav.user.password === nav.user.confirmPass)">Submit</button>
 	</div>
 </form>

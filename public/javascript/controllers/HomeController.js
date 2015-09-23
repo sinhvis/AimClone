@@ -3,10 +3,15 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = [];
+	HomeController.$inject = ['HomeFactory'];
 
-	function HomeController() {
+	function HomeController(HomeFactory) {
 		var vm = this;
-		vm.title = 'Welcome to our App!';
+		vm.title = 'AIM Clone';
+
+		HomeFactory.getUsers().then(function(res) {
+			vm.users = res ;
+			console.log(res) ;
+		}) ;
 	}
 })();

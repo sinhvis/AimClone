@@ -1,0 +1,14 @@
+<div class="well text-center">
+	<h2>{{vm.userLoggedIn.name}}</h2>
+	<strong>Username: </strong><p>{{vm.userLoggedIn.username}}</p>
+	<strong>Age: </strong><p>{{vm.userLoggedIn.age}}</p>
+	<strong>Email: </strong><p>{{vm.userLoggedIn.email}}</p>
+
+	<br />
+	<br />
+	<div>
+		<a type="btn" ui-sref="EditProfile({id:vm.userLoggedIn._id})" class="btn btn-sm info">Edit Profile</a>
+	</div>
+</div>
+
+

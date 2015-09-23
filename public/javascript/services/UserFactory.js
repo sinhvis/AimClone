@@ -33,7 +33,7 @@
 
 		o.register = function(user) {
 			var q = $q.defer();
-			$http.post('/api/users/register', user).success(function(res) {
+			$http.post('/api/user/register', user).success(function(res) {
 				// o.status.isLoggedIn = true;
 				// o.status.username = user.username;
 				q.resolve();
@@ -43,7 +43,7 @@
 
 		o.login = function(user) {
 			var q = $q.defer();
-			$http.post('/api/users/login', user).success(function(res) {
+			$http.post('/api/user/login', user).success(function(res) {
 				setToken(res.token);
 				$rootScope._user = isLoggedIn();
 				q.resolve();
@@ -63,10 +63,28 @@
 				case 2: {output += '=='; break;}
 				case 3: {output += '='; break;}
 				default:
-					throw 'Illegal base64url string'
+				throw 'Illegal base64url string'
 			}
 			return decodeURIComponent(escape($window.atob(output)));
-		}
+		} ;
+
+		// Getting data for users
+		o.getUserLoggedIn = function(id) {
+			var q = $q.defer() ;
+			$http.get('/api/user/' + id).success(function(res) {
+				q.resolve(res) ;
+			})
+			return q.promise ;
+		} ;
+
+		o.editProfile = function(editedProfile) {
+			var q = $q.defer() ;
+			$http.put('/api/user/' + editedProfile._id, editedProfile).success(function(res) {
+				q.resolve(res) ;
+				console.log(res) ;
+			}) ;
+			return q.promise ;
+		} ;
 
 		$rootScope._user = isLoggedIn();
 		return o;

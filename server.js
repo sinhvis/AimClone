@@ -5,11 +5,17 @@ var app = express();
 var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var passport = require('passport'); //passport below mongoose
+
+
+
 //models here
 require('./models/User');
+require('./models/Message') ;
+require('./models/Conversation');
 
 //passport at the bottom of the models
 require('./config/passport');
+
 //connection
 mongoose.connect('mongodb://localhost/aimclone_app');
 
@@ -19,6 +25,7 @@ app.engine('.html', require('ejs').renderFile);
 //Allow for these directories to be usable on the client side
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/bower_components'));
+
 //we want to render html files
 app.set('view engine', 'html');
 app.set('view options', {
@@ -32,6 +39,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
+
+// Defining routes
 var userRoutes = require('./routes/UserRoutes');
 
 //on homepage load, render the index page
@@ -39,7 +48,9 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
-app.use('/api/users', userRoutes);
+
+// Paths
+app.use('/api/user', userRoutes);
 
 var server = app.listen(port, function() {
 	var host = server.address().address;
