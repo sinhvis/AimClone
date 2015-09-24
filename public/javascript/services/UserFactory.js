@@ -6,6 +6,16 @@
 	function UserFactory($q, $http, $window, $rootScope) {
 		var o = {};
 
+		function getAuth() {
+			var auth = {
+				headers: {
+					Authorization: "Bearer " +
+					localStorage.getItem("token")
+				}
+			}
+			return auth ;
+		}
+
 
 		function setToken(token) {
 			localStorage.setItem("token", token);
@@ -67,6 +77,14 @@
 			}
 			return decodeURIComponent(escape($window.atob(output)));
 		} ;
+
+		o.getUsers = function() {
+			var q = $q.defer() ;
+			$http.get('/api/user').success(function(res) {
+				q.resolve(res)
+			}) ;
+			return q.promise ;
+		}
 
 		// Getting data for users
 		o.getUserLoggedIn = function(id) {

@@ -10,7 +10,6 @@ var passport = require('passport'); //passport below mongoose
 
 //models here
 require('./models/User');
-require('./models/Message') ;
 require('./models/Conversation');
 
 //passport at the bottom of the models
@@ -42,6 +41,8 @@ app.use(passport.initialize());
 
 // Defining routes
 var userRoutes = require('./routes/UserRoutes');
+var conversationRoutes = require('./routes/ConversationRoutes');
+
 
 //on homepage load, render the index page
 app.get('/', function(req, res) {
@@ -51,6 +52,7 @@ app.get('/', function(req, res) {
 
 // Paths
 app.use('/api/user', userRoutes);
+app.use('/api/conversation', conversationRoutes);
 
 var server = app.listen(port, function() {
 	var host = server.address().address;

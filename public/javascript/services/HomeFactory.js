@@ -26,6 +26,14 @@
 			}) ;
 			return q.promise ;
 		}
+
+		o.createMessage = function(message) {
+			var q = $q.defer() ;
+			$http.post('/api/conversation/post', message, getAuth()).success(function(res) {
+				q.resolve(res) ;
+			})
+			return q.promise ;
+		}
 		
 		return o;
 	}

@@ -5,8 +5,16 @@
 		<div ng-repeat="user in vm.users">
 			<h2>{{user.name}}</h2>
 			<h4>Age: {{user.age}}</h4>
-			<a ui-sref="Messaging">Message</a>
+			<a ui-sref="Messaging({id: user._id})" class="btn btn-info">Message</a>
+			<div class="well container" ng-if="nav.status.id" ng-controller="MessagingController as vm">
+				<!-- <button class="btn btn-lg btn-primary" ng-show="!addMessage" ng-click="addMessage = true;">Message</button> -->
+				<form ng-submit = "vm.newMessage.recipient = user._id; vm.createMessage();">
+					<textarea class="form-control" ng-model="vm.newMessage.message.body" placeholder="Message..." required></textarea>	
+					<button type="submit" class="btn btn-success" ng-click="addMessage=false;">Submit</button>
+					<button  class="btn btn-danger" >Cancel</button>
+				</form>
+			</div>
+
 		</div>
 	</div>
-</div>
 </div>

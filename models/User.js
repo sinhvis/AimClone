@@ -8,7 +8,8 @@ var UserSchema = new mongoose.Schema({
 	username: {type: String, lowercase: true, unique: true},
 	email: {type: String, lowercase: true, unique: true},
 	passwordHash: String,
-	salt: String
+	salt: String,
+	messages: [{type: mongoose.Schema.Types.ObjectId, ref: 'Conversation'}]
 	// friends: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}] 
 	// comments: [{type: mongoose.Schema.Types.ObjectId, ref: "MovieComment"}]
 });

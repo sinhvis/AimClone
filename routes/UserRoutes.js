@@ -67,13 +67,13 @@ router.put('/:id', function(req, res) {
 	}) ;
 }) ;
 
-router.get('/chatStart', function(req, res) {
-	console.log("Socket") ;
-	io.on('connection', function(socket){
-		socket.on('chat message', function(msg){
-			io.emit('chat message', msg);
-		});
-	});
-}) ;
+// router.get('/chatStart', function(req, res) {
+// 	console.log("Socket") ;
+// 	io.on('connection', function(socket){
+// 		socket.on('chat message', function(msg){
+// 			io.emit('chat message', msg);
+// 		});
+// 	});
+// }) ;
 
 module.exports = router;

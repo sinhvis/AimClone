@@ -6,7 +6,9 @@
 	function Config($stateProvider, $urlRouterProvider) {
 		$stateProvider.state('Home',{
 			url: '/',
-			templateUrl: 'views/home.html'
+			templateUrl: 'views/home.html',
+			controller: "HomeController",
+			controllerAs: "vm"
 		}).state('RegisterUser', {
 			url: '/Register',
 			templateUrl: 'views/register_user.html'
@@ -23,10 +25,10 @@
 			templateUrl: 'views/edit_profile.html',
 			controller: 'ProfileController',
 			controllerAs: 'vm'
-		}).state('Messages', {
-			url: '/messages',
-			templateUrl: 'views/messaging.html'
-		})
+		}).state('Messaging', {
+			url: '/Message/:id',
+			templateUrl: 'views/messaging.html',
+		}) ;
 		$urlRouterProvider.otherwise('/');
 	}
 })();
