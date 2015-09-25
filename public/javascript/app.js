@@ -26,7 +26,7 @@
 			controller: 'ProfileController',
 			controllerAs: 'vm'
 		}).state('Messaging', {
-			url: '/Message/:id',
+			url: '/Message/:id/:recUN',
 			templateUrl: 'views/messaging.html',
 		}) ;
 		$urlRouterProvider.otherwise('/');

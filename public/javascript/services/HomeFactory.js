@@ -34,6 +34,15 @@
 			})
 			return q.promise ;
 		}
+
+		o.getMessages = function(senderId, recipientId) {
+			console.log("HomeFactory o.getMessages") ;
+			var q = $q.defer() ;
+			$http.post('api/conversation/get', {sender: senderId, recipient: recipientId}).success(function(res) {
+				q.resolve(res) ;
+			})
+			return q.promise ;
+		}
 		
 		return o;
 	}
