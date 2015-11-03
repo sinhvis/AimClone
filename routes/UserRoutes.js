@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var Conversation = mongoose.model('Conversation') ;
+
 var passport = require('passport'); //Multiple ways of bringing authentication from different providers. such as fb, local, google, twitch
 
 
@@ -34,12 +36,13 @@ router.param('id', function(req, res, next, id) {
 			err: err, 
 			type: 'client'
 		}) ;
-			req.user = user ;
+			req.user = user;
 			next() ;
-		}) ;
-}) ;
+		});
+});
 
-// GET /users
+// GET /
+// gets all users
 router.get('/', function(req, res) {
 	var users = res ;
 	User.find({})
@@ -50,8 +53,22 @@ router.get('/', function(req, res) {
 	}) ;
 }) ;
 
+// Should return users that have Conversations started.
+// GET /user/getActiveUsers
+router.get('/getConvos/:id', function(req, res){
+	User.findOne({_id: req.user._id}).populate('messages').exec(function(err, userWithConversationsPopulated){
 
-// GET /couple
+		if (err) res.status(500).send({error: "Problem with populating messages"});
+		userWithConversationsPopulated.messages = userWithConversationsPopulated.messages.filter(function(item){
+			return item.messages.length > 0;
+		});
+
+		res.send({convos: userWithConversationsPopulated.messages});
+	})
+});
+
+// GET /user
+// gets user bases on id.
 router.get('/:id', function(req, res) {
 	res.send(req.user) ;
 }) ;
@@ -66,6 +83,7 @@ router.put('/:id', function(req, res) {
 		res.send(user) ;
 	}) ;
 }) ;
+
 
 // router.get('/chatStart', function(req, res) {
 // 	console.log("Socket") ;

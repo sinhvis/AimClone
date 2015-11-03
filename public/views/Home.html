@@ -1,15 +1,42 @@
-<div ng-controller="HomeController as vm">
+<div class="well container" ng-controller="HomeController as vm">
 	<!-- <h1>{{nav.title}}</h1> -->
 	<div ng-show="nav.status">
 		
-		<div ng-repeat="user in vm.users">
-			<h2>{{user.name}}</h2>
-			<h4>Age: {{user.age}}</h4>
-			<a ui-sref="Messaging({id: user._id, recUN: user.name})" class="btn btn-info">Message</a>
-			<!-- <button class="btn btn-lg btn-primary" ng-show="!addMessage" ng-click="addMessage = true;">Message</button> -->
 
-			
+		<!--This should only show conversations that are already going on-->
+		<h1>Recent Conversations</h1>
+		<table>
+			<tr ng-repeat="user in vm.convos">
+				<td style="width:200px">
+					<!-- <h3 align="right">{{user._id}}</h3> -->
+					<h3 align="right">{{user.name}}</h3>
+					<i align="right">(last message 5 days ago)</i>
+				</td>
+				<td>&nbsp;</td>
+				<td>
+					<p align="left"><a ui-sref="Messaging({id: user._id, recUN: user.name})" class="btn btn-info">Open</a></p>
+				</td>
 
-		</div>
+			</tr>
+		</table>
+
+		<!-- This should show all users -->
+		<h1>Directory</h1>
+		<table>
+			<tr ng-repeat="user in vm.users">
+				<td style="width:200px">
+					<h3 align="right">{{user.name}}</h3>
+					<i align="right">{{user.email}}</i>
+				</td>
+				<td>&nbsp;</td>
+				<td>
+					<p align="left"><a ui-sref="Messaging({id: user._id, recUN: user.name})" class="btn btn-info">Message</a></p>
+				</td>
+
+			</tr>
+		</table>
+
+		Area for getActiveUsers
+
 	</div>
 </div>

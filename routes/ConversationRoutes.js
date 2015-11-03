@@ -67,10 +67,8 @@ router.post('/get', function(req, res) {
 			}) 
 }
 })
-})
-		// function(err, movie) {
-  //       res.send(result);
-  //     });
+});
+
 
 
 module.exports = router;

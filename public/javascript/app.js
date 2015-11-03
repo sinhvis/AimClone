@@ -7,8 +7,6 @@
 		$stateProvider.state('Home',{
 			url: '/',
 			templateUrl: 'views/home.html',
-			controller: "HomeController",
-			controllerAs: "vm"
 		}).state('RegisterUser', {
 			url: '/Register',
 			templateUrl: 'views/register_user.html'

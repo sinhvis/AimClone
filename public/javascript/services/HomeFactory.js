@@ -27,6 +27,15 @@
 			return q.promise ;
 		}
 
+		o.getActiveUsers = function() {
+			console.log("DEBUG: HomeFactory: o.getActiveUsers called") ;
+			var q = $q.defer() ;
+			$http.get('/api/user/getConvos/').success(function(res) {
+				q.resolve(res) ;
+			}) ;
+			return q.promise ;
+		}
+
 		o.createMessage = function(message) {
 			var q = $q.defer() ;
 			$http.post('/api/conversation/post', message, getAuth()).success(function(res) {
