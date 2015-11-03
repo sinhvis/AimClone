@@ -28,13 +28,42 @@ $http.get('/api/user/getConvos/' + root._user.id).then(function(successRes) {
 
 			// vm.convos has both recipient and sender ids
 			for(var i = 0; i < vm.convos.length; i++) {
-				console.log("DEBUG: HomeController: vm.convos[" + i + "].recipient", vm.convos[i].recipient) ;
 
+				// Getting recipient users
 				$http.get('/api/user/' + vm.convos[i].recipient).then(function(res) {
-					vm.userArray[i] = res.data ;
-					console.log(vm.userArray.length) ;
-				})
+					vm.userArray.push(res.data) ;
+					removeLoggedInUser(vm.userArray, root._user.id) ;
+				}) ;
+
+				// Getting sender users
+				$http.get('/api/user/' + vm.convos[i].sender).then(function(res) {
+					vm.userArray.push(res.data) ;
+					removeLoggedInUser(vm.userArray, root._user.id) ;
+				}) ;
 			}
+			
+			// console.log(vm.userArray) ;
+			// console.log("DEBUG: HomeController: vm.userArray: ", vm.userArray) ;
+
+			// // Need to remove root._user.id from vm.userArray
+			// var senderId = root._user.id ;
+			// for(var i = 0; i < vm.userArray.length; i++) {
+			// 	if(vm.userArray[i] === senderId) {
+			// 		vm.userArray.splice(i, 1) ;
+			// 	}
+			// }
+
+
 		}) ;
+
+
+
+function removeLoggedInUser(userArray, loggedInId) {
+	for(var i = 0; i < userArray.length; i++) {
+		if(userArray[i]._id === loggedInId) {
+			vm.userArray.splice(i, 1) ;
+		}
+	}
+}
 }
 })();
