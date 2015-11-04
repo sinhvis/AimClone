@@ -8,8 +8,6 @@
 	function HomeController(HomeFactory, UF, $http, root) {
 		var vm = this;
 		vm.title = 'WTracker';
-		console.log("thingToLog")
-
 
 		HomeFactory.getUsers().then(function(res) {
 			vm.users = res ;

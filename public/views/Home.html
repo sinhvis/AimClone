@@ -6,7 +6,8 @@
 		<!--This should only show conversations that are already going on-->
 		<h1>Recent Conversations</h1>
 		<table>
-			<tr ng-repeat="user in vm.convos">
+			<!-- <tr ng-repeat="user in vm.convos"> -->
+			<tr ng-repeat="user in vm.userArray">
 				<td style="width:200px">
 					<!-- <h3 align="right">{{user._id}}</h3> -->
 					<h3 align="right">{{user.name}}</h3>
@@ -35,8 +36,5 @@
 
 			</tr>
 		</table>
-
-		Area for getActiveUsers
-
 	</div>
 </div>
