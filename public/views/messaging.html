@@ -1,7 +1,8 @@
 <div class="well container" ng-if="nav.status.id" ng-controller="MessagingController as vm">
 	<!-- <button class="btn btn-lg btn-primary" ng-show="!addMessage" ng-click="addMessage = true;">Message</button> -->
 	<div ng-repeat="msg in vm.msgArr">
-		<b>{{msg.sender}}</b> <span style="color:grey;font-size:75%;font-style:italic">{{msg.date | date:'shortTime'}}</span><br />
+		<!-- <b>{{msg.sender}}</b> <span style="color:grey;font-size:75%;font-style:italic">{{msg.date | date:'shortTime'}}</span><br /> -->
+		<b>{{msg.sender}}</b> <span style="color:grey;font-size:75%;font-style:italic">{{msg.date | date:'short'}}</span><br />
 		<p>{{msg.message.body}}</p>
 		
 	</div>
