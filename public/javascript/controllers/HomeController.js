@@ -3,16 +3,18 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = ['HomeFactory', "UserFactory", '$http', '$rootScope'];
+	// HomeController.$inject = ['HomeFactory', "UserFactory", '$http', '$rootScope'];
+	HomeController.$inject = ['HomeFactory', '$http', '$rootScope'];
 
-	function HomeController(HomeFactory, UF, $http, root) {
-		var vm = this;
-		vm.title = 'WTracker';
+	// function HomeController(HomeFactory, UF, $http, root) {
+		function HomeController(HomeFactory, $http, root) {
+			var vm = this;
+			vm.title = 'WTracker';
 
-		HomeFactory.getUsers().then(function(res) {
-			vm.users = res ;
-			console.log(res) ;
-		}) ;
+			HomeFactory.getUsers().then(function(res) {
+				vm.users = res ;
+				console.log(res) ;
+			}) ;
 
 		// $http.get('/api/user/getConvos/' + root._user.id).then(function(successRes) {
 		// 	vm.convos = successRes.data.convos;
